@@ -1,0 +1,46 @@
+import React from 'react';
+import {
+  CDBSidebar,
+  CDBSidebarContent,
+  CDBSidebarHeader,
+  CDBSidebarMenu,
+  CDBSidebarMenuItem,
+} from 'cdbreact';
+import {NavLink} from 'react-router-dom';
+import {Navbar} from 'react-bootstrap';
+import "../App.css";
+
+
+const Navigation = () => {
+  return (
+    <div>
+    <Navbar bg="dark" variant="dark" expand="lg" id="my-nav">
+        <Navbar.Brand className="pl-10" href="/">
+            Visitors Management System
+        </Navbar.Brand>
+    </Navbar>
+    <div className='sidebar'>
+    <CDBSidebar className=""textColor="#333" backgroundColor="#f0f0f0">
+        <CDBSidebarHeader prefix={<i className="fa fa-bars " />}>
+          Navigation
+        </CDBSidebarHeader>
+        <CDBSidebarContent >
+          <CDBSidebarMenu>
+            <NavLink exact to="/" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/tms" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="list">Tms List</CDBSidebarMenuItem>
+            </NavLink>
+            {/* <NavLink exact to="/tmss" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user">Manage Tms</CDBSidebarMenuItem>
+            </NavLink> */}
+          </CDBSidebarMenu>
+        </CDBSidebarContent>
+      </CDBSidebar>
+    </div>
+    </div>
+  );
+};
+
+export default Navigation;
