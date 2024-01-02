@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
-import { Button, ButtonToolbar } from 'react-bootstrap';
+import { Table, Button, ButtonToolbar } from 'react-bootstrap';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import AddTmModal from "./AddTmModal";
 import UpdateTmModal from "./UpdateTmModal";
 import { getTms, deleteTms } from '../../services/TmsService';
-
+import Pagination from '../Pagination';
 
 const TmsList = () => {
   const [tms, setTms] = useState([]);
@@ -14,7 +13,8 @@ const TmsList = () => {
   const [editModalShow, setEditModalShow] = useState(false);
   const [editTms, setEditTms] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);
-
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 5;
   useEffect(() => {
     let mounted = true;
     if (tms.length && !isUpdated) {
@@ -30,8 +30,8 @@ const TmsList = () => {
       mounted = false;
       setIsUpdated(false);
     };
-  }, [isUpdated]);
-
+  }, [isUpdated, tms.length]); 
+  
   const handleUpdate = (e, tm) => {
     e.preventDefault();
     setEditModalShow(true);
@@ -57,12 +57,17 @@ const TmsList = () => {
     }
   };
 
+  const handlePageChange = ({ selected }) => {
+    setCurrentPage(selected);
+  };
 
+  const offset = currentPage * itemsPerPage;
 
   const handlePrint = () => {
     window.print();
   };
 
+  const pageCount = Math.ceil(tms.length / itemsPerPage);
 
   return (
     <div className="container-fluid side-container">
@@ -73,18 +78,13 @@ const TmsList = () => {
             <Button className="" variant="primary" onClick={handleAdd}>
               Add Tm
             </Button>
-            <Button
-              onClick={handlePrint}
-              className=""
-            >
+            <Button onClick={handlePrint} className="">
               Print
             </Button>
             <AddTmModal show={addModalShow} setUpdated={setIsUpdated} onHide={() => setAddModalShow(false)} />
           </ButtonToolbar>
         </header>
 
-
-        <p id="manage tm"></p>
         <div className="overflow-x-auto ">
           <Table striped bordered hover className="react-bootstrap-table w-full " id="dataTable">
             <thead className="sticky top-0 bg-gray-800 z-50 text-white">
@@ -97,7 +97,7 @@ const TmsList = () => {
               </tr>
             </thead>
             <tbody>
-              {tms.map((tm) => (
+              {tms.slice(offset, offset + itemsPerPage).map((tm) => (
                 <tr key={tm.id}>
                   <td>{tm.id}</td>
                   <td>{tm.Name}</td>
@@ -117,7 +117,7 @@ const TmsList = () => {
             </tbody>
           </Table>
         </div>
-       
+        <Pagination pageCount={pageCount} handlePageChange={handlePageChange} />
       </div>
     </div>
   );
