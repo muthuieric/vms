@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Col, Row, Form, Button } from 'react-bootstrap';
-import { addTm } from '../services/TmsService';
+import { addTm } from '../../services/TmsService';
 
 const AddTmModal = (props) => {
   const handleSubmit = (e) => {

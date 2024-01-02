@@ -5,7 +5,8 @@ import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import AddTmModal from "./AddTmModal";
 import UpdateTmModal from "./UpdateTmModal";
-import { getTms, deleteTms } from '../services/TmsService';
+import { getTms, deleteTms } from '../../services/TmsService';
+
 
 const TmsList = () => {
   const [tms, setTms] = useState([]);
@@ -13,15 +14,6 @@ const TmsList = () => {
   const [editModalShow, setEditModalShow] = useState(false);
   const [editTms, setEditTms] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);
-  // const [searchTerm, setSearchTerm] = useState('');
-
-//   const filteredTms = tms.filter((tm) =>
-//   tm.Name.toLowerCase().includes(searchTerm.toLowerCase())
-// );
-// const handleSearch = (e) => {
-//   setSearchTerm(e.target.value);
-// };
-
 
   useEffect(() => {
     let mounted = true;
@@ -38,7 +30,7 @@ const TmsList = () => {
       mounted = false;
       setIsUpdated(false);
     };
-  }, [isUpdated, tms]);
+  }, [isUpdated]);
 
   const handleUpdate = (e, tm) => {
     e.preventDefault();
@@ -65,18 +57,17 @@ const TmsList = () => {
     }
   };
 
+
+
   const handlePrint = () => {
     window.print();
   };
 
 
-  let AddModelClose = () => setAddModalShow(false);
-  let EditModelClose = () => setEditModalShow(false);
-
   return (
     <div className="container-fluid side-container">
       <div className="row side-row">
-      <header className='flex justify-between '>
+        <header className='flex justify-between '>
           <h2 className='text-2xl font-bold text-center pt-2'>Tms</h2>
           <ButtonToolbar className='flex space-x-2'>
             <Button className="" variant="primary" onClick={handleAdd}>
@@ -88,22 +79,14 @@ const TmsList = () => {
             >
               Print
             </Button>
-            <AddTmModal show={addModalShow} setUpdated={setIsUpdated} onHide={AddModelClose}></AddTmModal>
+            <AddTmModal show={addModalShow} setUpdated={setIsUpdated} onHide={() => setAddModalShow(false)} />
           </ButtonToolbar>
         </header>
 
 
-        {/* <input
-          type="text"
-          placeholder="Search by Name"
-          value={searchTerm}
-          onChange={handleSearch}
-          className="form-control"
-        /> */}
-
         <p id="manage tm"></p>
-        <div className="overflow-x-auto">
-          <Table striped bordered hover className="react-bootstrap-table w-full" id="dataTable">
+        <div className="overflow-x-auto ">
+          <Table striped bordered hover className="react-bootstrap-table w-full " id="dataTable">
             <thead className="sticky top-0 bg-gray-800 z-50 text-white">
               <tr>
                 <th>ID</th>
@@ -124,11 +107,10 @@ const TmsList = () => {
                     <Button className="mr-2" onClick={(event) => handleUpdate(event, tm)}>
                       <FaEdit />
                     </Button>
-                    <UpdateTmModal show={editModalShow} tm={editTms} setUpdated={setIsUpdated} onHide={EditModelClose}></UpdateTmModal>
-
                     <Button className="mr-2" variant="danger" onClick={(event) => handleDelete(event, tm.id)}>
                       <RiDeleteBin5Line />
                     </Button>
+                    <UpdateTmModal show={editModalShow} tm={editTms} setUpdated={setIsUpdated} onHide={() => setEditModalShow(false)} />
                   </td>
                 </tr>
               ))}

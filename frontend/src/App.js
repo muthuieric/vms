@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
-import TmsList from "./components/TmsList";
+import TmsList from "./components/Tms/TmsList";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
