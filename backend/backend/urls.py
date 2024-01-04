@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('tms.urls')),
     path('', include('visitors.urls')),
     path('', include('employees.urls')),
+    path('', include('visits.urls')),
 
 ]

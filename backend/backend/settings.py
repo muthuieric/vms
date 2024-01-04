@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "tms.apps.TmsConfig",
     "visitors.apps.VisitorsConfig",
     "employees.apps.EmployeesConfig",
+    "visits.apps.VisitsConfig",
     "corsheaders",
     "rest_framework",
 ]
