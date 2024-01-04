@@ -37,14 +37,6 @@ export function addTm(tm) {
       throw error;
     });
 }
-// export function updateTm(id, tm) {
-//   return axios.put('http://127.0.0.1:8000/tms/' + id + '/', {
-//     Name:tm.Name.value,
-//     Phone:tm.Phone.value,
-//     Email:tm.Email.value
-//   })
-//    .then(response => response.data)
-// }
 
 export function updateTm(id, tm) {
   return axios.put(`${API_BASE_URL}${id}/`, {
