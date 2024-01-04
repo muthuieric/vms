@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import TmsList from "./components/Tms/TmsList";
+import VisitorsList from './components/Visitors/VisitorList';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
       <Routes>
          <Route exact path="/" element={<Home/>} />
          <Route path="/tms" element={<TmsList/>} />
+         <Route path="/visitors" element={<VisitorsList/>} />
+
        </Routes>
     </BrowserRouter>
   );

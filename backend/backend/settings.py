@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "tms.apps.TmsConfig",
     "visitors.apps.VisitorsConfig",
+    "Employees.apps.EmployeesConfig",
     "corsheaders",
     "rest_framework",
 ]
