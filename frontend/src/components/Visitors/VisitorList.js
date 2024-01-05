@@ -92,6 +92,7 @@ const VisitorsList = () => {
               <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>ID Number</th>
                 <th>Phone</th>
                 <th>Email</th>
                 <th>Red Flag</th>
@@ -103,6 +104,7 @@ const VisitorsList = () => {
                 <tr key={visitor.id}>
                   <td>{visitor.id}</td>
                   <td>{visitor.Name}</td>
+                  <td>{visitor.Id_number}</td>
                   <td>{visitor.Phone}</td>
                   <td>{visitor.Email}</td>
                   <td>{visitor.Red_flag ? 'Yes' : 'No'}</td>

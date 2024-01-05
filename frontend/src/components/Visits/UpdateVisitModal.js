@@ -7,11 +7,11 @@ const UpdateVisitModal = (props) => {
     e.preventDefault();
     updateVisit(props.visit.id, {
       visitor: e.target.name.value,
-      host: e.target.host.value, // Assuming you have an input field with the name "Host"
-      visit_type: e.target.visit_type.value, // Assuming you have an input field with the name "VisitType"
+      host: e.target.host.value, 
+      visit_type: e.target.visit_type.value, 
       purpose: e.target.purpose.value,
-      checkin: e.target.checkin.value, // Assuming you have an input field with the name "Checkin"
-      checkout: e.target.checkout.value, // Assuming you have an input field with the name "Checkout"
+      checkin: e.target.checkin.value, 
+      checkout: e.target.checkout.value, 
     })
       .then(
         (result) => {
@@ -37,23 +37,30 @@ const UpdateVisitModal = (props) => {
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="name">
                   <Form.Label>Visitor's Name</Form.Label>
-                  <Form.Control type="text" name="name" required defaultValue={props.visit.visitor} placeholder="" />
+                  <Form.Control type="text" name="name" required defaultValue={props.visit.visitor} placeholder="" readOnly/>
                 </Form.Group>
                 <Form.Group controlId="host">
                   <Form.Label>Host</Form.Label>
-                  <Form.Control type="text" name="host" required defaultValue={props.visit.host} placeholder="" />
+                  <Form.Control type="text" name="host" required defaultValue={props.visit.host} placeholder="" readOnly />
                 </Form.Group>
                 <Form.Group controlId="visit_type">
                   <Form.Label>Visit Type</Form.Label>
-                  <Form.Control type="text" name="visit_type" required defaultValue={props.visit.visit_type} placeholder="" />
+                  <Form.Control as="select" name="visit_type" required defaultValue={props.visit.visit_type} >
+                    <option value="Contractor">Contractor</option>
+                    <option value="Delivery">Delivery</option>
+                    <option value="Visitor">Visitor</option>
+                  </Form.Control>
                 </Form.Group>
                 <Form.Group controlId="purpose">
                   <Form.Label>Purpose</Form.Label>
-                  <Form.Control type="text" name="purpose" required defaultValue={props.visit.purpose} placeholder="" />
+                  <Form.Control as="select" name="purpose" required defaultValue={props.visit.purpose} >
+                    <option value="Personal">Personal</option>
+                    <option value="Official">Official</option>
+                  </Form.Control>
                 </Form.Group>
                 <Form.Group controlId="checkin">
                   <Form.Label>Checkin</Form.Label>
-                  <Form.Control type="text" name="checkin" required defaultValue={props.visit.checkin} placeholder="" />
+                  <Form.Control type="text" name="checkin" required defaultValue={props.visit.checkin} placeholder="" readOnly />
                 </Form.Group>
                 <Form.Group controlId="checkout">
                   <Form.Label>Checkout</Form.Label>

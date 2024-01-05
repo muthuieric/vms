@@ -11,6 +11,7 @@ export function getVisits() {
     });
 }
 
+
 export function deleteVisit(id) {
   return axios.delete(`${API_BASE_URL}${id}/`, {
     headers: {
