@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from "./components/Navigation";
+import Dashboard from './components/Dashboard/Dashboard';
 import Home from "./components/Home";
 import TmsList from "./components/Tms/TmsList";
 import VisitorsList from './components/Visitors/VisitorList';
@@ -14,6 +15,7 @@ function App() {
       <Navigation />
       <Routes>
          <Route exact path="/" element={<Home/>} />
+         <Route exact path="/dashboard" element={<Dashboard/>} />
          <Route path="/tms" element={<TmsList/>} />
          <Route path="/visitors" element={<VisitorsList/>} />
          <Route path="/visits" element={<VisitsList/>} />

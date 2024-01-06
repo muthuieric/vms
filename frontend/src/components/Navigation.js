@@ -29,6 +29,9 @@ const Navigation = () => {
             <NavLink exact to="/" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="home">Home</CDBSidebarMenuItem>
             </NavLink>
+            <NavLink exact to="/dashboard" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="home">DashBoard</CDBSidebarMenuItem>
+            </NavLink>
             <NavLink exact to="/tms" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="list">Tms List</CDBSidebarMenuItem>
             </NavLink>

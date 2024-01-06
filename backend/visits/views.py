@@ -5,6 +5,12 @@ from rest_framework.views import APIView
 from .models import Visit
 from .serializers import VisitSerializer
 from django.http.response import Http404, JsonResponse
+from rest_framework.generics import RetrieveAPIView
+from rest_framework import status
+from django.db.models import Count
+
+
+
 
 
 # Create your views here.
@@ -47,3 +53,32 @@ class VisitView(APIView):
         visit_to_delete = self.get_visit(pk)
         visit_to_delete.delete()
         return JsonResponse("Visit Deleted Successfully", safe=False)
+
+class TotalVisitsView(RetrieveAPIView):
+    queryset = Visit.objects.all()
+
+    def retrieve(self, request, *args, **kwargs):
+        total_visits = self.get_queryset().count()
+        return Response({'total_visits': total_visits}, status=status.HTTP_200_OK)
+    
+class VisitTypeDataView(APIView):
+    def get(self, request, *args, **kwargs):
+        visit_type_data = Visit.objects.values('visit_type').annotate(count=Count('visit_type'))
+        return Response({'visit_types': list(visit_type_data)}, status=status.HTTP_200_OK)
+
+class PurposeDataView(APIView):
+    def get(self, request, *args, **kwargs):
+        purpose_data = Visit.objects.values('purpose').annotate(count=Count('purpose'))
+        return Response({'purposes': list(purpose_data)}, status=status.HTTP_200_OK)
+
+
+class HostVisitorDataView(APIView):
+    def get(self, request, *args, **kwargs):
+        # Fetch data from the Visit model, grouping by host and counting the number of visitors
+        host_visitor_data = Visit.objects.values('host').annotate(visitor_count=Count('visitor'))
+
+        # Convert the queryset to a list of dictionaries
+        data_list = list(host_visitor_data)
+
+        # Return the data as JSON
+        return Response({'host_visitor_data': data_list})
