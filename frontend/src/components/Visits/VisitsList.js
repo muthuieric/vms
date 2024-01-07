@@ -88,6 +88,21 @@ const VisitsList = () => {
 
   const pageCount = Math.ceil(filteredVisits.length / itemsPerPage);
 
+  const formatDate = (dateString) => {
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: 'numeric',
+      minute: 'numeric',
+      // second: 'numeric',
+    };
+  
+    const date = new Date(dateString);
+    return date.toLocaleString('en-US', options);
+  };
+  
+
   return (
     <div className="container-fluid side-container">
       <div className="row side-row">
@@ -140,8 +155,8 @@ const VisitsList = () => {
                   <td>{visit.host}</td>
                   <td>{visit.visit_type}</td>
                   <td>{visit.purpose}</td>
-                  <td>{visit.checkin}</td>
-                  <td>{visit.checkout || 'Not Checked Out'}</td>
+                  <td>{formatDate(visit.checkin)}</td>
+                  <td>{visit.checkout ? formatDate(visit.checkout) : 'Not Checked Out'}</td>
                   <td>
                     <Button className="mr-2" onClick={(event) => handleUpdate(event, visit)}>
                       <FaEdit />
