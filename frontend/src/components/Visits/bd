@@ -40,16 +40,12 @@ const VisitsList = () => {
   useEffect(() => {
     // Update filteredVisits when search or date changes
     setFilteredVisits(visits.filter((visit) => {
-      const visitDate = new Date(visit.checkin).toLocaleDateString();
-      const filterDate = new Date(dateFilter).toLocaleDateString();
-  
       return (
         (search.toLowerCase() === '' || visit.visitor.toLowerCase().includes(search)) &&
-        (dateFilter === '' || visitDate === filterDate)
+        (dateFilter === '' || visit.checkin === dateFilter)
       );
     }));
   }, [search, dateFilter, visits]);
-  
 
   const handleUpdate = (e, visit) => {
     e.preventDefault();
