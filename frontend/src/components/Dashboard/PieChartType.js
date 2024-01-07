@@ -48,7 +48,7 @@ const PieChartType = () => {
   }, [visitTypeData]);
 
   return (
-    <div id="piechart" className="shadow-lg lg:w-1/2 lg:h-64 "></div>
+    <div id="piechart" className="shadow-lg lg:w-full mb-4"></div>
   );
 };
 

@@ -19,25 +19,19 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <div className="mx-auto ">
-        <h2 className="text-2xl font-bold text-center pt-2">Dashboard</h2>
+    <div className="mx-auto h-screen ">
+        <h2 className="text-2xl font-bold text-center pt-4 flex justify-start pl-6 ">Dashboard</h2>
   
-      <div className="flex flex-col md:flex-row md:space-x-4 p-4 md:p-24">
-        
-        <div className="md:w-1/2   mb-12 lg:w-1/2 lg:h-64  shadow-lg bg-blue-600 text-white rounded-lg p-4 py-10">
-            <h2 className="text-3xl font-bold text-center mb-10">Total Visits</h2>
-            <p className="text-6xl text-center">{totalVisits}</p>
-        </div>
-
+      <div className="flex flex-col md:flex-row md:space-x-4 p-4 ">     
         <PieChartType  />
-        
         <PurposePieChart />
-
+        <div className="mb-4 lg:w-full  shadow-lg bg-blue-600 text-white rounded-lg p-4 ">
+            <h2 className="text-2xl font-bold text-center mb-8">Total Visits</h2>
+            <p className="text-5xl text-center">{totalVisits}</p>
+        </div>
       </div>
 
-      <div>
             <HostVisitorChart />
-        </div>
     </div>
   );
 };

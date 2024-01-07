@@ -20,8 +20,6 @@ function App() {
          <Route path="/visitors" element={<VisitorsList/>} />
          <Route path="/visits" element={<VisitsList/>} />
          <Route path="/employees" element={<EmployeesList/>} />
-
-
        </Routes>
     </BrowserRouter>
   );

@@ -73,20 +73,26 @@ const EmployeesList = () => {
   return (
     <div className="container-fluid side-container">
       <div className="row side-row">
-        <header className='flex justify-between '>
-          <h2 className='text-2xl font-bold text-center pt-2'>Employees</h2>
-          <ButtonToolbar className='flex space-x-2'>
-            <Button className="" variant="primary" onClick={handleAdd}>
-              Add Employee
-            </Button>
-            <Button onClick={handlePrint} className="">
-              Print
-            </Button>
-            <AddEmployeeModal show={addModalShow} setUpdated={setIsUpdated} onHide={() => setAddModalShow(false)} />
-          </ButtonToolbar>
-        </header>
+      <header className='flex flex-col md:flex-row justify-between items-center p-2 md:p-2'>
+      <h2 className='text-2xl font-bold text-center md:text-left  mb-3 md:mb-0'>
+        Employees
+      </h2>
+      <ButtonToolbar className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2'>
+        <Button className="md:inline-block" variant="primary" onClick={handleAdd}>
+          Add Employee
+        </Button>
+        <Button className="md:inline-block" onClick={handlePrint}>
+          Print
+        </Button>
+        <AddEmployeeModal
+          show={addModalShow}
+          setUpdated={setIsUpdated}
+          onHide={() => setAddModalShow(false)}
+        />
+      </ButtonToolbar>
+    </header>
 
-        <div className="overflow-x-auto ">
+        <div className="overflow-x-auto  ">
           <Table striped bordered hover className="react-bootstrap-table w-full " id="dataTable">
             <thead className="sticky top-0 bg-gray-800 z-50 text-white">
               <tr>

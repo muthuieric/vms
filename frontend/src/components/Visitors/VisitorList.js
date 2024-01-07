@@ -73,13 +73,13 @@ const VisitorsList = () => {
   return (
     <div className="container-fluid side-container">
       <div className="row side-row">
-        <header className='flex justify-between '>
-          <h2 className='text-2xl font-bold text-center pt-2'>Visitors</h2>
-          <ButtonToolbar className='flex space-x-2'>
-            <Button className="" variant="primary" onClick={handleAdd}>
+        <header className='flex flex-col md:flex-row justify-between items-center p-2 md:p-2'>
+          <h2 className='text-2xl font-bold text-center md:text-left  mb-3 md:mb-0'>Visitors</h2>
+          <ButtonToolbar className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2'>
+            <Button className="md:inline-block "  variant="primary" onClick={handleAdd}>
               Add Visitor
             </Button>
-            <Button onClick={handlePrint} className="">
+            <Button className="md:inline-block "  onClick={handlePrint} >
               Print
             </Button>
             <AddVisitorModal show={addModalShow} setUpdated={setIsUpdated} onHide={() => setAddModalShow(false)} />

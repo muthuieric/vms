@@ -56,9 +56,8 @@ const HostVisitorChart = () => {
   }, [drawChart, hostVisitorData]);
 
   return (
-    <div>
-      <h2>Host Visitor Chart</h2>
-      <div id="host-visitor-chart" style={{ width: '100%', height: '400px' }}></div>
+    <div className="flex flex-col md:flex-row md:space-x-4 p-4">
+      <div id="host-visitor-chart" className='w-full h-full' ></div>
     </div>
   );
 };
