@@ -108,7 +108,7 @@ const VisitsList = () => {
           <InputGroup className='my-3'>
             <Form.Control
               onChange={(e) => setSearch(e.target.value)}
-              placeholder='Search'
+              placeholder='Search...'
             />
             <Form.Control
               type="date"

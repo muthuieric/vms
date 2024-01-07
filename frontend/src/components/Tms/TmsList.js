@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, ButtonToolbar } from 'react-bootstrap';
+import { Table, Button, ButtonToolbar, Form, InputGroup } from 'react-bootstrap';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import AddTmModal from "./AddTmModal";
@@ -15,6 +15,10 @@ const TmsList = () => {
   const [isUpdated, setIsUpdated] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
+  const [filteredTms, setFilteredTms] = useState([]);
+  const [search, setSearch] = useState('');
+
+
 
   
   useEffect(() => {
@@ -26,6 +30,7 @@ const TmsList = () => {
       .then(data => {
         if (mounted) {
           setTms(data);
+          setFilteredTms(data);
         }
       });
     return () => {
@@ -33,6 +38,13 @@ const TmsList = () => {
       setIsUpdated(false);
     };
   }, [isUpdated, tms.length]); 
+
+  useEffect(() => {
+    setFilteredTms(tms.filter((tm) => {
+      return (
+        (search.toLowerCase() === '' || tm.Name.toLowerCase().includes(search)));
+    }));
+  }, [search, tms]);
   
   const handleUpdate = (e, tm) => {
     e.preventDefault();
@@ -87,6 +99,17 @@ const TmsList = () => {
       </ButtonToolbar>
     </header>
 
+
+    <Form>
+          <InputGroup className='my-3'>
+            <Form.Control
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder='Search'
+            />
+          </InputGroup>
+    </Form>
+
+
         <div className="overflow-x-auto ">
         <Table striped bordered hover className="react-bootstrap-table w-full " id="dataTable">
 
@@ -100,7 +123,7 @@ const TmsList = () => {
               </tr>
             </thead>
             <tbody>
-              {tms.slice(offset, offset + itemsPerPage).map((tm) => (
+              {filteredTms.slice(offset, offset + itemsPerPage).map((tm) => (
                 <tr key={tm.id}>
                   <td>{tm.id}</td>
                   <td>{tm.Name}</td>

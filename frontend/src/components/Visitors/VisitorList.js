@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, ButtonToolbar } from 'react-bootstrap';
+import { Table, Button, ButtonToolbar, Form, InputGroup } from 'react-bootstrap';
 import { FaEdit } from 'react-icons/fa';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import AddVisitorModal from "./AddVisitorModal";
@@ -7,14 +7,18 @@ import UpdateVisitorModal from "./UpdateVisitorModal";
 import { getVisitors, deleteVisitor } from '../../services/VisitorsService';
 import Pagination from '../Pagination';
 
+// ... (existing imports)
+
 const VisitorsList = () => {
   const [visitors, setVisitors] = useState([]);
+  const [filteredVisitors, setFilteredVisitors] = useState([]);
   const [addModalShow, setAddModalShow] = useState(false);
   const [editModalShow, setEditModalShow] = useState(false);
   const [editVisitor, setEditVisitor] = useState([]);
   const [isUpdated, setIsUpdated] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 5;
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     let mounted = true;
@@ -25,6 +29,7 @@ const VisitorsList = () => {
       .then(data => {
         if (mounted) {
           setVisitors(data);
+          setFilteredVisitors(data);
         }
       });
     return () => {
@@ -32,6 +37,15 @@ const VisitorsList = () => {
       setIsUpdated(false);
     };
   }, [isUpdated, visitors.length]);
+
+  useEffect(() => {
+    // Update filteredVisitors when search changes
+    setFilteredVisitors(visitors.filter((visitor) => {
+      return (
+        visitor.Name.toLowerCase().includes(search.toLowerCase())
+      );
+    }));
+  }, [search, visitors]);
 
   const handleUpdate = (e, visitor) => {
     e.preventDefault();
@@ -68,7 +82,7 @@ const VisitorsList = () => {
     window.print();
   };
 
-  const pageCount = Math.ceil(visitors.length / itemsPerPage);
+  const pageCount = Math.ceil(filteredVisitors.length / itemsPerPage);
 
   return (
     <div className="container-fluid side-container">
@@ -76,15 +90,24 @@ const VisitorsList = () => {
         <header className='flex flex-col md:flex-row justify-between items-center p-2 md:p-2'>
           <h2 className='text-2xl font-bold text-center md:text-left  mb-3 md:mb-0'>Visitors</h2>
           <ButtonToolbar className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2'>
-            <Button className="md:inline-block "  variant="primary" onClick={handleAdd}>
+            <Button className="md:inline-block " variant="primary" onClick={handleAdd}>
               Add Visitor
             </Button>
-            <Button className="md:inline-block "  onClick={handlePrint} >
+            <Button className="md:inline-block " onClick={handlePrint}>
               Print
             </Button>
             <AddVisitorModal show={addModalShow} setUpdated={setIsUpdated} onHide={() => setAddModalShow(false)} />
           </ButtonToolbar>
         </header>
+
+        <Form>
+          <InputGroup className='my-3'>
+            <Form.Control
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder='Search...'
+            />
+          </InputGroup>
+        </Form>
 
         <div className="overflow-x-auto ">
           <Table striped bordered hover className="react-bootstrap-table w-full " id="dataTable">
@@ -100,7 +123,7 @@ const VisitorsList = () => {
               </tr>
             </thead>
             <tbody>
-              {visitors.slice(offset, offset + itemsPerPage).map((visitor) => (
+              {filteredVisitors.slice(offset, offset + itemsPerPage).map((visitor) => (
                 <tr key={visitor.id}>
                   <td>{visitor.id}</td>
                   <td>{visitor.Name}</td>
