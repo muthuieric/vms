@@ -1,4 +1,4 @@
-body, html {
+/* body, html {
   height: 100%;
   width: 100%;
   margin: 0;
@@ -20,9 +20,30 @@ body, html {
 
 .side-row {
   padding: 5px;
-}
+} */
 
-.pagination__link {
+/* .pagination__link {
   text-decoration: none;
   border-bottom: none;
 }
+ */
+
+.alert {
+    width: 400px;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    animation: alertFrame 1s;
+    color: white;
+    z-index: 99;
+}
+
+@keyframes alertFrame {
+    0% {
+        right: -500px;
+    }
+    100% {
+        right: 20px;
+    }
+}
+

@@ -1,29 +1,52 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navigation from "./components/Navigation";
-import Dashboard from './components/Dashboard/Dashboard';
-import Home from "./components/Home";
-import TmsList from "./components/Tms/TmsList";
-import VisitorsList from './components/Visitors/VisitorList';
-import VisitsList from './components/Visits/VisitsList';
-import EmployeesList from './components/Employees/EmployeeList';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ChangePassword from "./Pages/ChangePassword";
+import EmailVerification from "./Pages/EmailVerification";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import ResetPassword from "./Pages/ResetPassword";
+import ResetPasswordConfirm from "./Pages/ResetPasswordConfirm";
+import Signup from "./Pages/Signup";
+import Layout from "./High Order Function/Layout";
+import { Provider } from "react-redux";
+import Store from "./Store";
+import example from "./Pages/example";
+import imagine from "./Pages/imagine";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Dashboard from "./Dashboard/Dashboard";
+import TmsList from "./Tms/TmsList";
+import VisitorsList from "./Visitors/VisitorList";
+import VisitsList from "./Visits/VisitsList";
+import EmployeesList from "./Employees/EmployeeList";
 
 
-function App() {
+
+const App = () => {
   return (
-    <BrowserRouter>
-      <Navigation />
-      <Routes>
-         <Route exact path="/" element={<Home/>} />
-         <Route exact path="/dashboard" element={<Dashboard/>} />
-         <Route path="/tms" element={<TmsList/>} />
-         <Route path="/visitors" element={<VisitorsList/>} />
-         <Route path="/visits" element={<VisitsList/>} />
-         <Route path="/employees" element={<EmployeesList/>} />
-       </Routes>
-    </BrowserRouter>
-  );
-};
+    <Provider store={Store}>
+      <Router>
+        <Layout>
+          <Routes>
+            <Route exact path="example/" Component={example}></Route>
+            <Route exact path="imagine/" Component={imagine}></Route>
+            <Route path="login/" Component={Login}></Route>
+            <Route path="signup/" Component={Signup}></Route>
+            <Route path="change/password/" Component={ChangePassword}></Route>
+            <Route path="reset/password/" Component={ResetPassword}></Route>
+            <Route path="dj-rest-auth/registration/account-confirm-email/:key/" Component={EmailVerification}></Route>
+            <Route path="reset/password/confirm/:uid/:token" Component={ResetPasswordConfirm}></Route>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/dashboard" element={<Dashboard />} />
+            <Route path="/tms" element={<TmsList />} />
+            <Route path="/visitors" element={<VisitorsList />} />
+            <Route path="/visits" element={<VisitsList />} />
+            <Route path="/employees" element={<EmployeesList />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </Provider>
+  )
+}
 
-export default App;
+export default App
