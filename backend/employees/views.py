@@ -5,7 +5,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http.response import JsonResponse
 
- # Create your views here.
 class EmployeeView(APIView):
     def get_employee(self, pk):
         try:

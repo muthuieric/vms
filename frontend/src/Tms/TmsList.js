@@ -86,34 +86,47 @@ const TmsList = () => {
   return (
     <div className="container-fluid side-container">
       <div className="row side-row">
-      <header className='flex flex-col md:flex-row justify-between items-center p-2 md:p-2'>
-      <h2 className='text-2xl font-bold text-center md:text-left  mb-3 md:mb-0'>Tms</h2>
-      <ButtonToolbar className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2'>
-        <Button  className="md:inline-block" variant="primary" onClick={handleAdd}>
-          Add Tm
-        </Button>
-        <Button onClick={handlePrint} className="md:inline-block">
-          Print
-        </Button>
-        <AddTmModal show={addModalShow} setUpdated={setIsUpdated} onHide={() => setAddModalShow(false)} />
-      </ButtonToolbar>
-    </header>
+        <header className="flex flex-col md:flex-row justify-between items-center p-2 md:p-2">
+          <h2 className="text-2xl font-bold text-center md:text-left  mb-3 md:mb-0">
+            Tms
+          </h2>
+          <ButtonToolbar className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
+            <Button
+              className="md:inline-block"
+              variant="primary"
+              onClick={handleAdd}
+            >
+              Add Tm
+            </Button>
+            <Button onClick={handlePrint} className="md:inline-block">
+              Print
+            </Button>
+            <AddTmModal
+              show={addModalShow}
+              setUpdated={setIsUpdated}
+              onHide={() => setAddModalShow(false)}
+            />
+          </ButtonToolbar>
+        </header>
 
-
-    <Form>
-          <InputGroup className='my-3'>
+        <Form>
+          <InputGroup className="my-3">
             <Form.Control
               onChange={(e) => setSearch(e.target.value)}
-              placeholder='Search'
+              placeholder="Search"
             />
           </InputGroup>
-    </Form>
-
+        </Form>
 
         <div className="overflow-x-auto ">
-        <Table striped bordered hover className="react-bootstrap-table w-full " id="dataTable">
-
-            <thead className="sticky top-0 bg-gray-800 z-50 text-white">
+          <Table
+            striped
+            bordered
+            hover
+            className="react-bootstrap-table w-full "
+            id="dataTable"
+          >
+            <thead className="sticky top-0 bg-gray-800 z-10 text-white">
               <tr>
                 <th>ID</th>
                 <th>Name</th>
@@ -130,13 +143,25 @@ const TmsList = () => {
                   <td>{tm.Phone}</td>
                   <td>{tm.Email}</td>
                   <td>
-                    <Button className="mr-2" onClick={(event) => handleUpdate(event, tm)}>
+                    <Button
+                      className="mr-2"
+                      onClick={(event) => handleUpdate(event, tm)}
+                    >
                       <FaEdit />
                     </Button>
-                    <Button className="mr-2" variant="danger" onClick={(event) => handleDelete(event, tm.id)}>
+                    <Button
+                      className="mr-2"
+                      variant="danger"
+                      onClick={(event) => handleDelete(event, tm.id)}
+                    >
                       <RiDeleteBin5Line />
                     </Button>
-                    <UpdateTmModal show={editModalShow} tm={editTms} setUpdated={setIsUpdated} onHide={() => setEditModalShow(false)} />
+                    <UpdateTmModal
+                      show={editModalShow}
+                      tm={editTms}
+                      setUpdated={setIsUpdated}
+                      onHide={() => setEditModalShow(false)}
+                    />
                   </td>
                 </tr>
               ))}

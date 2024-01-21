@@ -131,7 +131,7 @@ const EmployeesList = ({ isAuthenticated }) => {
             className="react-bootstrap-table w-full "
             id="dataTable"
           >
-            <thead className="sticky top-0 bg-gray-800 z-50 text-white">
+            <thead className="sticky top-0 bg-gray-800 z-10 text-white">
               <tr>
                 <th>ID</th>
                 <th>Name</th>

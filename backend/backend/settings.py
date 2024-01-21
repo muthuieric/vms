@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     # "rest_framework",
        # corsheader
     "corsheaders",
-	# rest-framework
     'rest_framework',
     'rest_framework.authtoken',
 	# dj-rest-auth
@@ -67,9 +66,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 
 MIDDLEWARE = [
-    # "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
-     # cors header middleware
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     'allauth.account.middleware.AccountMiddleware',

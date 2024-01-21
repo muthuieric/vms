@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ChangePassword from "./Pages/ChangePassword";
 import EmailVerification from "./Pages/EmailVerification";
@@ -11,8 +11,6 @@ import Signup from "./Pages/Signup";
 import Layout from "./High Order Function/Layout";
 import { Provider } from "react-redux";
 import Store from "./Store";
-import example from "./Pages/example";
-import imagine from "./Pages/imagine";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Dashboard/Dashboard";
 import TmsList from "./Tms/TmsList";
@@ -28,8 +26,6 @@ const App = () => {
       <Router>
         <Layout>
           <Routes>
-            <Route exact path="example/" Component={example}></Route>
-            <Route exact path="imagine/" Component={imagine}></Route>
             <Route path="login/" Component={Login}></Route>
             <Route path="signup/" Component={Signup}></Route>
             <Route path="change/password/" Component={ChangePassword}></Route>

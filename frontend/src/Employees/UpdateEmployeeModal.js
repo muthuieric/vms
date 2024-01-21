@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Col, Row, Form, Button } from 'react-bootstrap';
+import {Modal, Col, Row, Form, Button} from 'react-bootstrap';
 import { updateEmployee } from '../services/EmployeesService';
 
 const UpdateEmployeeModal = (props) => {

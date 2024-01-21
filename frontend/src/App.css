@@ -1,34 +1,4 @@
-/* body, html {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-}
-
-
-.sidebar {
-  display: flex;
-  height: 100vh;
-  float: left;
-  overflow: 'scroll initial';
-}
-
-
-
-.side-container {
-  padding-top: 10px;
-}
-
-.side-row {
-  padding: 5px;
-} */
-
-/* .pagination__link {
-  text-decoration: none;
-  border-bottom: none;
-}
- */
-
-.alert {
+/* .alert {
     width: 400px;
     position: absolute;
     right: 20px;
@@ -36,14 +6,16 @@
     animation: alertFrame 1s;
     color: white;
     z-index: 99;
-}
+} 
 
-@keyframes alertFrame {
+ @keyframes alert-frame {
     0% {
         right: -500px;
     }
     100% {
         right: 20px;
     }
-}
+} */
+
+
 
