@@ -27,7 +27,6 @@ urlpatterns = [
     path('dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
     path('reset/password/confirm/<int:uid>/<str:token>', reset_password_confirm, name="password_reset_confirm"),
     path('dj-rest-auth/google/', GoogleLogin.as_view(), name='google_login'),
-    path('', include('tms.urls')),
     path('', include('visitors.urls')),
     path('', include('employees.urls')),
     path('', include('visits.urls')),

@@ -13,7 +13,6 @@ import { Provider } from "react-redux";
 import Store from "./Store";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./Dashboard/Dashboard";
-import TmsList from "./Tms/TmsList";
 import VisitorsList from "./Visitors/VisitorList";
 import VisitsList from "./Visits/VisitsList";
 import EmployeesList from "./Employees/EmployeeList";
@@ -34,7 +33,6 @@ const App = () => {
             <Route path="reset/password/confirm/:uid/:token" Component={ResetPasswordConfirm}></Route>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/dashboard" element={<Dashboard />} />
-            <Route path="/tms" element={<TmsList />} />
             <Route path="/visitors" element={<VisitorsList />} />
             <Route path="/visits" element={<VisitsList />} />
             <Route path="/employees" element={<EmployeesList />} />

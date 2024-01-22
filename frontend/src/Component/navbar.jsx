@@ -42,17 +42,6 @@ const Navbar = ({ logout, isAuthenticated, user, getUser }) => {
                           Dashboard
                         </Link>
                       </li>
-
-                      <li className="mb-2">
-                        <Link
-                          className="text-white block  no-underline  md:inline-block md:mr-4 text-lg font-medium bold hover:underline"
-                          to="/tms/"
-                          activeClassName="font-bold"
-                          onClick={toggleNavbar}
-                        >
-                          Tms
-                        </Link>
-                      </li>
                       <li className="mb-2">
                         <Link
                           className="text-white block  no-underline  md:inline-block md:mr-4 text-lg font-medium bold hover:underline"

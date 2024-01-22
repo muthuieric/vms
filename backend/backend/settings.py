@@ -56,7 +56,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     # local app
     "accounts.apps.AccountsConfig",
-    "tms.apps.TmsConfig",
     "visitors.apps.VisitorsConfig",
     "employees.apps.EmployeesConfig",
     "visits.apps.VisitsConfig",
