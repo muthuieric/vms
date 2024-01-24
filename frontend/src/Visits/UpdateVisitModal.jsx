@@ -11,7 +11,8 @@ const UpdateVisitModal = (props) => {
       visit_type: e.target.visit_type.value,
       purpose: e.target.purpose.value,
       checkin: e.target.checkin.value,
-      checkout: e.target.checkout.value,
+      checkout: new Date().toISOString(),
+      // checkout: e.target.checkout.value,
     }).then(
       (result) => {
         alert(result);
@@ -88,7 +89,7 @@ const UpdateVisitModal = (props) => {
                     <option value="Official">Official</option>
                   </Form.Control>
                 </Form.Group>
-                <Form.Group controlId="checkin">
+                {/* <Form.Group controlId="checkin">
                   <Form.Label>Checkin</Form.Label>
                   <Form.Control
                     type="text"
@@ -98,15 +99,15 @@ const UpdateVisitModal = (props) => {
                     placeholder=""
                     readOnly
                   />
-                </Form.Group>
-                <Form.Group controlId="checkout">
+                </Form.Group> */}
+                {/* <Form.Group controlId="checkout">
                   <Form.Label>Checkout</Form.Label>
                   <Form.Control
                     type="datetime-local"
                     name="checkout"
                     defaultValue={props.visit.checkout}
                   />
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Group>
                   <p></p>
                   <Button variant="primary" type="submit">

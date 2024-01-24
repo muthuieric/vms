@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = "https://django-render-vms.onrender.com/employees/";
+const API_BASE_URL = "http://127.0.0.1:8000/employees/";
 
 export function getEmployees() {
   return axios.get(API_BASE_URL)

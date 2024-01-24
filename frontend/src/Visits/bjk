@@ -10,12 +10,10 @@ import {
 } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { RxExit } from "react-icons/rx";
 import AddVisitModal from "./AddVisitModal";
 import UpdateVisitModal from "./UpdateVisitModal";
-import { getVisits, deleteVisit, updateVisit } from "../services/VisitsService";
+import { getVisits, deleteVisit } from "../services/VisitsService";
 import Pagination from "../Pagination";
-
 
 const VisitsList = ({ isAuthenticated }) => {
   const [visits, setVisits] = useState([]);
@@ -87,21 +85,6 @@ const VisitsList = ({ isAuthenticated }) => {
     }
   };
 
-  const handleClick = (e, id) => {
-    e.preventDefault();
-    updateVisit(id, {  
-      checkout: new Date().toISOString(),
-    }).then(
-      (result) => {
-        alert(result);
-        setIsUpdated(true);
-      },
-      (error) => {
-        console.error("Failed to Update Visit:", error);
-        alert("Failed to Update Visit");
-      }
-    );
-  };
   const handlePageChange = ({ selected }) => {
     setCurrentPage(selected);
   };
@@ -210,23 +193,17 @@ const VisitsList = ({ isAuthenticated }) => {
                     </td>
                     <td>
                       <Button
-                        className="mr-2 bg-blue-600"
+                        className="mr-2"
                         onClick={(event) => handleUpdate(event, visit)}
                       >
                         <FaEdit />
                       </Button>
                       <Button
-                        className="mr-2 bg-red-600"
+                        className="mr-2"
                         variant="danger"
                         onClick={(event) => handleDelete(event, visit.id)}
                       >
                         <RiDeleteBin5Line />
-                      </Button>
-                      <Button
-                        className="mr-2 bg-black"
-                        onClick={(event) => handleClick(event, visit.id)}
-                      >
-                        <RxExit />
                       </Button>
                       <UpdateVisitModal
                         show={editModalShow}

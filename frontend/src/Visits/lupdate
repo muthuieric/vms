@@ -16,7 +16,6 @@ import UpdateVisitModal from "./UpdateVisitModal";
 import { getVisits, deleteVisit, updateVisit } from "../services/VisitsService";
 import Pagination from "../Pagination";
 
-
 const VisitsList = ({ isAuthenticated }) => {
   const [visits, setVisits] = useState([]);
   const [filteredVisits, setFilteredVisits] = useState([]);
@@ -89,7 +88,7 @@ const VisitsList = ({ isAuthenticated }) => {
 
   const handleClick = (e, id) => {
     e.preventDefault();
-    updateVisit(id, {  
+    updateVisit(id, {
       checkout: new Date().toISOString(),
     }).then(
       (result) => {
@@ -253,4 +252,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps)(VisitsList);
-
