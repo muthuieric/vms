@@ -1,21 +1,23 @@
 import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ChangePassword from "./Pages/ChangePassword";
 import EmailVerification from "./Pages/EmailVerification";
-import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import ResetPassword from "./Pages/ResetPassword";
 import ResetPasswordConfirm from "./Pages/ResetPasswordConfirm";
 import Signup from "./Pages/Signup";
-import Layout from "./High Order Function/Layout";
-import { Provider } from "react-redux";
-import Store from "./Store";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Home from "./Pages/Home";
 import Dashboard from "./Dashboard/Dashboard";
 import VisitorsList from "./Visitors/VisitorList";
 import VisitsList from "./Visits/VisitsList";
 import EmployeesList from "./Employees/EmployeeList";
+import Layout from "./High Order Function/Layout";
+import { Provider } from "react-redux";
+import Store from "./Store";
+
+
 
 
 
