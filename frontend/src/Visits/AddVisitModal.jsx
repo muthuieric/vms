@@ -40,26 +40,28 @@ const AddVisitModal = (props) => {
       });
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addVisit({
-      visitor: selectedVisitor ? selectedVisitor.value : e.target.visitor.value,
-      host: selectedEmployee ? selectedEmployee.value : e.target.host.value,
-      visit_type: e.target.visit_type.value,
-      purpose: e.target.purpose.value,
-      checkin: new Date().toISOString(),
-      checkout: null,
-    }).then(
-      (result) => {
-        alert(result);
-        props.setUpdated(true);
-      },
-      (error) => {
-        console.error("Failed to Add Visit:", error);
-        alert("Failed to Add Visit");
-      }
-    );
-  };
+ const handleSubmit = (e) => {
+   e.preventDefault();
+   addVisit({
+     visitor: selectedVisitor ? selectedVisitor.value : e.target.visitor.value,
+     host: selectedEmployee ? selectedEmployee.value : e.target.host.value,
+     visit_type: e.target.visit_type.value,
+     purpose: e.target.purpose.value,
+     checkin: new Date().toISOString(),
+     checkout: null,
+   }).then(
+     (result) => {
+       alert(result);
+       props.setUpdated(true);
+       props.onHide(); // Close the modal after successful submission
+     },
+     (error) => {
+       console.error("Failed to Add Visit:", error);
+       alert("Failed to Add Visit");
+     }
+   );
+ };
+
 
   const handleSelectVisitorChange = (selectedOption) => {
     setSelectedVisitor(selectedOption);

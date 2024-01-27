@@ -46,6 +46,7 @@ const VisitsList = ({ isAuthenticated }) => {
     };
   }, [isUpdated, visits.length]);
 
+
   useEffect(() => {
     // Update filteredVisits when search or date changes
     setFilteredVisits(

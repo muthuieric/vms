@@ -27,7 +27,8 @@ class VisitView(APIView):
             data = self.get_visit(pk)
             serializer = VisitSerializer(data)
         else:
-            data = Visit.objects.all()
+            data = Visit.objects.all().order_by('-checkin')
+            # data = Visit.objects.all()
             serializer = VisitSerializer(data, many=True)
         return Response(serializer.data)
 
