@@ -7,7 +7,7 @@ from .models import CustomUserModel
 class UserAdminCustom(UserAdmin):
     fieldsets = (
         (None, {"fields": ("email", "role", "password")}),
-        (_("Personal info"), {"fields": ("first_name", "last_name")}),
+        (_("Personal info"), {"fields": ("first_name",)}),
         (
             _("Permissions"),
             {
@@ -25,11 +25,11 @@ class UserAdminCustom(UserAdmin):
     add_fieldsets = (
         (
             None,
-            {"classes": ("wide",), "fields": ("email", "first_name", "last_name", "role", "password1", "password2"),},
+            {"classes": ("wide",), "fields": ("email", "first_name", "role", "password1", "password2"),},
         ),
     )
-    list_display = ("email", "first_name", "last_name", "role",  "is_staff")
-    search_fields = ("first_name", "last_name", "email","role", )
+    list_display = ("email", "first_name", "role",  "is_staff")
+    search_fields = ("first_name", "email","role", )
     ordering = ("email",)
     readonly_fields = ['date_joined', 'last_login']
 

@@ -9,19 +9,18 @@ const Signup = ({ signup }) => {
   const [formData, setFormData] = useState({
     email: "",
     first_name: "",
-    last_name: "",
     password1: "",
     password2: "",
   });
 
-  const { email, first_name, last_name, password1, password2 } = formData;
+  const { email, first_name, password1, password2 } = formData;
 
   const handlingInput = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handlingSubmit = (e) => {
     e.preventDefault();
-    signup(email, first_name, last_name, password1, password2);
+    signup(email, first_name, password1, password2);
     setStatus(true);
   };
 
@@ -46,20 +45,6 @@ const Signup = ({ signup }) => {
               className="mt-1 p-2 w-full border rounded-lg focus:outline-none"
               id="first_name"
               placeholder="First name ..."
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="last_name" className="block text-sm font-medium text-gray-600">
-              Last Name
-            </label>
-            <input
-              name="last_name"
-              value={last_name}
-              onChange={(e) => handlingInput(e)}
-              type="text"
-              className="mt-1 p-2 w-full border  rounded-lg  focus:outline-none"
-              id="last_name"
-              placeholder="Last name ..."
             />
           </div>
           <div className="mb-4">

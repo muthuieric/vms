@@ -1,8 +1,15 @@
-# serializers.py
 from rest_framework import serializers
-from .models import CustomUserModel
+from dj_rest_auth.registration.serializers import RegisterSerializer
 
-class CustomUserModelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUserModel
-        fields = ['pk', 'email', 'first_name', 'last_name', 'role']
+
+class CustomRegisterSerializer(RegisterSerializer):
+    first_name = serializers.CharField()
+
+    def get_cleaned_data(self):
+        super(CustomRegisterSerializer, self).get_cleaned_data()
+        return {
+            'password1': self.validated_data.get('password1', ''),
+            'password2': self.validated_data.get('password2', ''),
+            'email': self.validated_data.get('email', ''),
+            'first_name': self.validated_data.get('first_name', '')
+        }

@@ -164,13 +164,13 @@ export const logout = () => async dispatch => {
     }
 }
 
-export const signup = ( email, first_name, last_name, password1, password2 ) => async dispatch => {
+export const signup = ( email, first_name, password1, password2 ) => async dispatch => {
     const config = {
         headers: {
             "Content-Type": "application/json"
         }
     };
-    const body = JSON.stringify({ email, first_name, last_name, password1, password2 });
+    const body = JSON.stringify({ email, first_name,  password1, password2 });
     try {
         await axios.post(
           "http://127.0.0.1:8000/dj-rest-auth/registration/",

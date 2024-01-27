@@ -10,7 +10,6 @@ from .managers import CustomUserManager
 class CustomUserModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("Email Address"), unique=True, max_length=255)
     first_name = models.CharField(_("First Name"), max_length=100)
-    last_name = models.CharField(_("Last Name"), max_length=100, null=True, blank=True)
     role = models.CharField(_('Role'), max_length=50, default='user')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
